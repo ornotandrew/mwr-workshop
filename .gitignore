@@ -1,2 +1,5 @@
 *.txt
 *.xml
+*.gz
+*.pot
+*.rule*
