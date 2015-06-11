@@ -12,9 +12,9 @@ with open(args.mask_path) as mask_file, open(args.output, "w") as rules_file:
     for line in mask_file:
         line = line.strip()
         if line[0] == "#" or line[0] == "":
-            next
+            continue
         mask = line
-        out = subprocess.check_output([args.mask_processor_path, mask])
+        out = subprocess.check_output([args.mask_processor_path, "'"+mask+"'"])
         outs.extend(out.split("\n"))
     for line in outs:
         rules_file.write(line + "\n")
