@@ -14,6 +14,7 @@ with open(args.mask_path) as mask_file, open(args.output, "w") as rules_file:
         if not line or line[0] == "#":
             continue
         mask = line
+        print "Running for mask {0}".format(mask)
         out = subprocess.check_output([args.mask_processor_path, "'"+mask+"'"])
         outs.extend(out.split("\n"))
         for line in outs:
