@@ -11,7 +11,7 @@ with open(args.mask_path) as mask_file, open(args.output, "w") as rules_file:
     outs = []
     for line in mask_file:
         line = line.strip()
-        if line[0] == "#" or line[0] == "":
+        if not line or line[0] == "#":
             continue
         mask = line
         out = subprocess.check_output([args.mask_processor_path, "'"+mask+"'"])
