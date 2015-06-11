@@ -8,13 +8,13 @@ parser.add_argument('output',  help='Where to output the rule file')
 args = parser.parse_args()
 
 with open(args.mask_path) as mask_file, open(args.output, "w") as rules_file:
-    outs = []
     for line in mask_file:
+        outs = []
         line = line.strip()
         if not line or line[0] == "#":
             continue
         mask = line
         out = subprocess.check_output([args.mask_processor_path, "'"+mask+"'"])
         outs.extend(out.split("\n"))
-    for line in outs:
-        rules_file.write(line + "\n")
+        for line in outs:
+            rules_file.write(line + "\n")
